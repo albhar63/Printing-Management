@@ -15,12 +15,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        uses: actions/upload-pages-artifact@v3
         
       - name: Setup Node
-        uses: actions/setup-node@1e60f620b9541d16bece96c5465dc8ee9832be0b # v4.1.0
-        with:
-          node-version: '20'
+        uses: actions/upload-pages-artifact@v3
+          node-version: 
           cache: 'npm'
           
       - name: Install dependencies
@@ -30,12 +29,11 @@ jobs:
         run: npm run build
         
       - name: Setup Pages
-        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
+        uses: actions/upload-pages-artifact@v3
         
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@56afc609e74202b53e69885f05ae636682f48d57 # v3.0.1
-        with:
-          path: './dist'
+        uses: actions/upload-pages-artifact@v3
+          path:
 
   deploy:
     environment:
@@ -46,4 +44,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@1b5b4047a836564503e476a3086c1f51b5949d # v4.0.5
+       uses: actions/upload-pages-artifact@v3
