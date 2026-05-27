@@ -206,20 +206,22 @@ export default function OrderForm({ onOrderCreated }) {
     onOrderCreated(newOrder);
    
   
-    fetch("https://congregationally-uncut-emmett.ngrok-free.dev/webhook/printflow-pro/orders/webhook/order", {
-      method: "POST",
-      headers: {
-       "Content-Type": "application/json"
-    },
-     body: JSON.stringify(newOrder)
-    })
-      .then(res => res.json())
-      .then(data => {
-     console.log("تم إرسال الطلب إلى n8n:", data);
-   })
-    .catch(err => {
-     console.error("خطأ أثناء الإرسال:", err);
-     });
+fetch("https://congregationally-uncut-emmett.ngrok-free.dev/webhook-test/order", {
+  method: "POST",
+  mode: "cors",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify(newOrder)
+})
+.then(async (res) => {
+  const text = await res.text();
+  console.log("Webhook response:", text);
+})
+.catch((err) => {
+  console.error("خطأ أثناء الإرسال:", err);
+});
+
 
 
 
